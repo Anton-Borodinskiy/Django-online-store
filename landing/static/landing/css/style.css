@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
+html, body{
+    height: 100%;
+    max-height: 100%;
+
+}
+
+
+.top-container{
+        padding-top: 10%;
+    font-family: 'Roboto Slab', serif;
+    }
+    .qeneral-container{
+        background: url("https://avatars.mds.yandex.net/get-pdb/805160/4b94375e-67b0-49c0-a1db-0aab64d287a8/orig");
+        height: 100%;
+        font-weight: 100px;
+        line-height: 5px;
+
+    }
+    .title{
+        color: blue;
+        text-align: center;
+    }

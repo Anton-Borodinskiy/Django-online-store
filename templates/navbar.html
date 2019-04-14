@@ -1,0 +1,102 @@
+{% load static %}
+<!-- ##### Header Area Start ##### -->
+    <header class="header_area">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        <div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
+            <!-- Classy Menu -->
+            <nav class="classy-navbar" id="essenceNav">
+                <!-- Logo -->
+                <a class="nav-brand" href="/"><img src="{% static "img/core-img/logo.png"%}" alt=""></a>
+                <!-- Navbar Toggler -->
+                <div class="classy-navbar-toggler">
+                    <span class="navbarToggler"><span></span><span></span><span></span></span>
+                </div>
+                <!-- Menu -->
+                <div class="classy-menu">
+                    <!-- close btn -->
+                    <div class="classycloseIcon">
+                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                    </div>
+                    <!-- Nav Start -->
+                    <div class="classynav">
+                        <ul>
+                            <li><a href="/clothing/">Одежда <img src="https://image.flaticon.com/icons/svg/141/141585.svg" style="width: 25px; height: 25px"> </a>
+                            </li>
+                            <li><a href="/shoes/">Обувь <img src="https://image.flaticon.com/icons/svg/100/100161.svg" style="width: 25px; height: 25px"></a>
+                            </li>
+                            <li><a href="/accesories/">Аксесуары <img src="https://image.flaticon.com/icons/svg/88/88744.svg" style="width: 25px; height: 25px"></a></li>
+                            <li><a href="https://vk.com/graciaonly">Контакты <img src="https://image.flaticon.com/icons/svg/133/133667.svg" style="width: 25px; height: 25px"></a></li>
+                        </ul>
+                    </div>
+                    <!-- Nav End -->
+                </div>
+            </nav>
+            <!-- Header Meta Data -->
+            <div class="header-meta d-flex clearfix justify-content-end">
+                <!-- Search Area -->
+                <div class="search-area">
+                    <form action="#" method="post">{% csrf_token %}
+                        <input type="search" name="search" id="headerSearch" placeholder="Поиск">
+                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+                <!-- Cart Area -->
+                <div class="cart-area">
+                    <a href="#" id="essenceCartBtn"><img src="{% static "img/core-img/bag.svg"%}" alt=""> <span id="basket_total_nmb">
+                                                {% if products_total_nmb %}
+                            {{ products_total_nmb }}
+                        {% else %}
+                            0
+                        {% endif %}
+                    </span></a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- ##### Right Side Cart Area ##### -->
+    <div class="cart-bg-overlay"></div>
+
+    <div class="right-side-cart-area">
+
+        <!-- Cart Button -->
+        <div class="cart-button">
+            <a href="#" id="rightSideCart"><img src="{% static "img/core-img/bag.svg"%}" alt=""> </a>
+        </div>
+
+        <div class="cart-content d-flex">
+
+            <!-- Cart Summary -->
+            <div class="cart-amount-summary" id="#basket-container">
+
+                <h2 style="text-align: center">Корзина</h2>
+            <table class="table" id="cart-table" style="text-align: center">
+  <thead>
+    <tr>
+      <th scope="col">Наименование</th>
+      <th scope="col">Количество</th>
+      <th scope="col">Цена</th>
+              <th scope="col"></th>
+    </tr>
+  </thead>
+            <tbody>
+            {% for product_in_basket in products_in_basket %}
+                 <tr>
+             <th scope="row">{{ product_in_basket.product.name }} </th>
+                  <td>{{ product_in_basket.nmb }}</td>
+                    <td>{{ product_in_basket.total_price }}</td>
+                <td><a class="delete-item" href="" data-product_id="{{ product_in_basket.id }}">x</a></td>
+                 </tr>
+            {% endfor %}
+              </tbody>
+</table>
+                <div class="checkout-btn mt-100" style="text-align: center;">
+                    <a href="{% url 'checkout'  %}" class="btn essence-btn">Оформить заказ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Right Side Cart End ##### -->
+    <!-- ##### Header Area End ##### -->
