@@ -2,4 +2,4 @@
 Simple online store on python Django
 
 
-Just use python manage.py runserver
+Just use "python manage.py runserver"
